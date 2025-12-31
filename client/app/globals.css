@@ -27,3 +27,93 @@
 .Merienda {
   font-family: var(--Merienda) !important;
 }
+
+/* NavBar */
+.menu-link a {
+  font-weight: 600;
+  transition: var(--transition-regular);
+}
+.menu-link a:hover {
+  color: var(--prim-color);
+}
+
+.menu-link a:hover {
+  color: var(--prim-color);
+}
+
+.fixed-nav {
+  animation: Anim-fixed var(--transition-slow) forwards linear;
+  box-shadow: 0 2px 10px rgba(131, 131, 131, 0.6);
+}
+
+.fixed-nav .nav-button {
+  padding: 25px 20px !important;
+}
+
+@keyframes Anim-fixed {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Hero */
+.Hero {
+  background-color: #d3ebc0;
+  background-image: url(../public/hero-bg.png);
+  width: 100%;
+  height: 60vh;
+  border-radius: 20px;
+}
+
+.hero-wrap h1 {
+  opacity: 0;
+  animation: Anim-top var(--transition-slow) 0.8s forwards linear;
+}
+
+.hero-wrap p {
+  opacity: 0;
+  animation: Anim-top var(--transition-slow) 0.8s forwards linear;
+}
+
+.hero-wrap button {
+  opacity: 0;
+  animation: Anim-top var(--transition-slow) 0.6s forwards linear;
+}
+
+.hero-image {
+  opacity: 0;
+  animation: Anim-scale var(--transition-slow) 1.5s forwards linear;
+}
+
+/* Animations */
+
+@keyframes Anim-top {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes Anim-scale {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

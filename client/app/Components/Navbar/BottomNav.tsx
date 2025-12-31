@@ -192,7 +192,7 @@ export default function BottomNav() {
                     className="flex items-center justify-between w-full py-2 text-left"
                   >
                     <span className="flex items-center gap-1">
-                      {link.label} <i className="ri-arrow-down-s-line"></i>
+                      {link.label}
                     </span>
                     <i
                       className={
