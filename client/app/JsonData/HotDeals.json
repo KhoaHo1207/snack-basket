@@ -1,0 +1,52 @@
+[
+  {
+    "Id": "HotDeals1",
+    "image": "/HotDeals/product-img1.png",
+    "title": "Marcel’s Modern Pantry Almond Unsweetened",
+    "price": "$15.99",
+    "lessprice": "$28.99",
+    "review": "(17k)",
+    "sold": "18/35",
+    "sale": "35%"
+  },
+  {
+    "Id": "HotDeals2",
+    "image": "/HotDeals/product-img2.png",
+    "title": "O Organics Milk, Whole, Vitamin D",
+    "price": "$18.99",
+    "lessprice": "$20.99",
+    "review": "(17k)",
+    "sold": "22/40",
+    "sale": "30%"
+  },
+  {
+    "Id": "HotDeals3",
+    "image": "/HotDeals/product-img3.png",
+    "title": "Whole Grains and Seeds Organic Bread",
+    "price": "$18.99",
+    "lessprice": "$32.99",
+    "review": "(17k)",
+    "sold": "15/25",
+    "sale": "New"
+  },
+  {
+    "Id": "HotDeals4",
+    "image": "/HotDeals/product-img4.png",
+    "title": "Tropicana 100% Juice, Orange, No Pulp",
+    "price": "$20.99",
+    "lessprice": "$30.99",
+    "review": "(17k)",
+    "sold": "8/15",
+    "sale": "50%"
+  },
+  {
+    "Id": "HotDeals5",
+    "image": "/HotDeals/product-img2.png",
+    "title": "Tropicana 100% Juice, Orange, No Pulp",
+    "price": "$14.99",
+    "lessprice": "$28.99",
+    "review": "(17k)",
+    "sold": "20/30",
+    "sale": "New"
+  }
+]

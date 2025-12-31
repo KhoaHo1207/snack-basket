@@ -1,0 +1,47 @@
+[
+  {
+    "Id": "BestDeals1",
+    "image": "/BestDeals/product-img1.png",
+    "title": "Fresh Eggplant & Cucumber Mix",
+    "price": "$14.99",
+    "lessprice": "$28.99",
+    "review": "(17k)",
+    "sold": "18/35"
+  },
+  {
+    "Id": "BestDeals2",
+    "image": "/BestDeals/product-img2.png",
+    "title": "Organic Beets with Greens",
+    "price": "$12.99",
+    "lessprice": "$22.99",
+    "review": "(12k)",
+    "sold": "22/40"
+  },
+  {
+    "Id": "BestDeals3",
+    "image": "/BestDeals/product-img3.png",
+    "title": "Mixed Fresh Vegetables Pack",
+    "price": "$13.99",
+    "lessprice": "$25.99",
+    "review": "(8k)",
+    "sold": "15/25"
+  },
+  {
+    "Id": "BestDeals4",
+    "image": "/BestDeals/product-img5.png",
+    "title": "Sun-Maid Raisins",
+    "price": "$16.99",
+    "lessprice": "$32.99",
+    "review": "(5k)",
+    "sold": "8/15"
+  },
+  {
+    "Id": "BestDeals5",
+    "image": "/BestDeals/product-img6.png",
+    "title": "Doritos Spicy Sweet Chili ",
+    "price": "$28.99",
+    "lessprice": "$38.99",
+    "review": "(11k)",
+    "sold": "20/30"
+  }
+]

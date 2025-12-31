@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "Organic Market",
+    "time": "Delivery by 6:15am",
+    "off": "$5 off Snack & Candy",
+    "vendorMain": "/vendor-logo1.png",
+    "vendors": ["/vendor-img3.png", "/vendor-img4.png", "/vendor-img5.png"]
+  },
+  {
+    "id": 2,
+    "title": "Safeway",
+    "time": "Delivery by 6:15am",
+    "off": "$5 off Snack & Candy",
+    "vendorMain": "/vendor-logo2.png",
+    "vendors": ["/vendor-img3.png", "/vendor-img4.png", "/vendor-img5.png"]
+  },
+  {
+    "id": 3,
+    "title": "Food Max",
+    "time": "Delivery by 6:15am",
+    "off": "$5 off Snack & Candy",
+    "vendorMain": "/vendor-logo3.png",
+    "vendors": ["/vendor-img3.png", "/vendor-img4.png", "/vendor-img5.png"]
+  },
+  {
+    "id": 4,
+    "title": "HRmart",
+    "time": "Delivery by 6:15am",
+    "off": "$5 off Snack & Candy",
+    "vendorMain": "/vendor-logo4.png",
+    "vendors": ["/vendor-img3.png", "/vendor-img4.png", "/vendor-img5.png"]
+  },
+  {
+    "id": 5,
+    "title": "Lucky Supermarket",
+    "time": "Delivery by 6:15am",
+    "off": "$5 off Snack & Candy",
+    "vendorMain": "/vendor-logo5.png",
+    "vendors": ["/vendor-img3.png", "/vendor-img4.png", "/vendor-img5.png"]
+  },
+  {
+    "id": 6,
+    "title": "Arico Farmer",
+    "time": "Delivery by 6:15am",
+    "off": "$5 off Snack & Candy",
+    "vendorMain": "/vendor-logo6.png",
+    "vendors": ["/vendor-img3.png", "/vendor-img4.png", "/vendor-img5.png"]
+  },
+  {
+    "id": 7,
+    "title": "Farmer Market",
+    "time": "Delivery by 6:15am",
+    "off": "$5 off Snack & Candy",
+    "vendorMain": "/vendor-logo7.png",
+    "vendors": ["/vendor-img3.png", "/vendor-img4.png", "/vendor-img5.png"]
+  },
+  {
+    "id": 8,
+    "title": "Foodsco",
+    "time": "Delivery by 6:15am",
+    "off": "$5 off Snack & Candy",
+    "vendorMain": "/vendor-logo8.png",
+    "vendors": ["/vendor-img3.png", "/vendor-img4.png", "/vendor-img5.png"]
+  }
+]
