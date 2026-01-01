@@ -3,6 +3,7 @@ import Deals from "./Deals/Deals";
 import Hero from "./Header/Hero";
 import Offers from "./Offer-Banner/Offers";
 import Banners from "./Promotion-Banner/Banners";
+import Recommend from "./Recommend/Recommend";
 
 export default function Index() {
   return (
@@ -12,6 +13,7 @@ export default function Index() {
       <Banners />
       <Deals />
       <Offers />
+      <Recommend />
     </>
   );
 }

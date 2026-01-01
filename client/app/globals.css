@@ -175,6 +175,11 @@
   z-index: -1;
   opacity: 0.1;
 }
+
+.off-product {
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
 /* MQ Sections */
 @media (max-width: 991px) {
   .Hero {

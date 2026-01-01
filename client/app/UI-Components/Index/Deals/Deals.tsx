@@ -45,7 +45,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 
 export default function Deals() {
-  const hanldeAddToCart = (product: any) => {
+  const handleAddToCart = (product: any) => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     const existingProduct = cart.find((item: any) => item.Id === product.Id);
 
@@ -125,7 +125,7 @@ export default function Deals() {
                 />
                 <div
                   className="absolute top-0 right-0 flex justify-between items-center mt-2"
-                  onClick={() => hanldeAddToCart(product)}
+                  onClick={() => handleAddToCart(product)}
                 >
                   <button className="px-4 py-2 font-semibold text-[var(--prim-color)] bg-[var(--prim-light)] rounded-full text-base hover:bg-[var(--prim-color)] hover:text-white cursor-pointer transition-all ">
                     Add <i className="bi bi-cart"></i>
