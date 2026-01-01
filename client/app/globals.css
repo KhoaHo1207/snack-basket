@@ -145,6 +145,14 @@
   background-position: center center;
   background-size: cover;
 }
+
+/* Products */
+.product-wrap img {
+  transition: var(--transition-regular);
+}
+.product-wrap:hover img {
+  transform: scale(1.1);
+}
 /* MQ Sections */
 @media (max-width: 991px) {
   .Hero {

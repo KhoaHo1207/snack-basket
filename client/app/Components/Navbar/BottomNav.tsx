@@ -65,7 +65,7 @@ const navLinks: NavLink[] = [
 ];
 export default function BottomNav() {
   const [isFixed, setIsFixed] = useState(false);
-  const [wishlistCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
   const [cartCount, setCartCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<Record<string, boolean>>({});
@@ -86,6 +86,24 @@ export default function BottomNav() {
     };
   }, []);
 
+  useEffect(() => {
+    const loadCounts = () => {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+
+      const uniqueCart = new Set(cart.map((item: any) => item.Id));
+      const uniqueWishlist = new Set(wishlist.map((item: any) => item.Id));
+
+      setCartCount(uniqueCart.size);
+      setWishlistCount(uniqueWishlist.size);
+    };
+
+    loadCounts();
+    window.addEventListener("storageUpdate", loadCounts);
+    return () => {
+      window.removeEventListener("storageUpdate", loadCounts);
+    };
+  }, []);
   return (
     <div
       className={`w-full bg-white shadow-sm transition-all duration-500 ${
@@ -162,17 +180,21 @@ export default function BottomNav() {
             {/* Wishlist */}
             <Link href={"#"} className="relative">
               <i className="bi bi-heart text-gray-600 text-xl hover:text-(--prim-color) transition-all">
-                <span className="absolute -top-2 -right-2 bg-(--prim-color) text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
-                  {wishlistCount || 0}
-                </span>
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-(--prim-color) text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
+                    {wishlistCount}
+                  </span>
+                )}
               </i>
             </Link>
             {/* Cart */}
             <Link href={"#"} className="relative">
               <i className="bi bi-cart text-gray-600 text-xl hover:text-(--prim-color) transition-all">
-                <span className="absolute -top-2 -right-2 bg-(--prim-color) text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
-                  {cartCount || 0}
-                </span>
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-(--prim-color) text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
               </i>
             </Link>
           </div>
