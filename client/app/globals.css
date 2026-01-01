@@ -134,6 +134,17 @@
   justify-content: center;
 }
 
+/* Deals */
+.deals-wrap {
+  background-image: url(../public/Deals-bg1.png);
+  background-position: center center;
+  background-size: cover;
+}
+.deals-wrap2 {
+  background-image: url(../public/Deals-bg2.png);
+  background-position: center center;
+  background-size: cover;
+}
 /* MQ Sections */
 @media (max-width: 991px) {
   .Hero {

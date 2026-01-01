@@ -66,7 +66,7 @@ const navLinks: NavLink[] = [
 export default function BottomNav() {
   const [isFixed, setIsFixed] = useState(false);
   const [wishlistCount] = useState(0);
-  const [cartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<Record<string, boolean>>({});
 
@@ -85,6 +85,7 @@ export default function BottomNav() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <div
       className={`w-full bg-white shadow-sm transition-all duration-500 ${
