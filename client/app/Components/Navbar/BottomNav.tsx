@@ -118,7 +118,7 @@ export default function BottomNav() {
             isFixed ? "lg:flex" : "hidden"
           }`}
         >
-          Snack <span className="text-(--prim-color)">Basket</span>
+          Snack <span className="text-[var(--prim-color)]">Basket</span>
         </Link>
 
         <nav className="hidden lg:flex space-x-6 menu-link relative">
@@ -142,7 +142,7 @@ export default function BottomNav() {
                       <Link
                         key={item.label}
                         href={overrideHref ?? "#"}
-                        className="block px-4 py-2 rounded-md hover:bg-(--prim-light) transition-all"
+                        className="block px-4 py-2 rounded-md hover:bg-[var(--prim-light)] transition-all"
                       >
                         {item.label}
                       </Link>
@@ -162,7 +162,7 @@ export default function BottomNav() {
           )}
         </nav>
 
-        <button className="nav-button cursor-pointer font-bold bg-(--prim-color) text-white p-3 hidden lg:flex">
+        <button className="nav-button cursor-pointer font-bold bg-[var(--prim-color)] text-white p-3 hidden lg:flex">
           <i className="bi bi-telephone pe-2 text-xl">+84 901 352 651</i>
         </button>
 
@@ -178,10 +178,10 @@ export default function BottomNav() {
           </button>
           <div className="flex lg:hidden items-center space-x-6">
             {/* Wishlist */}
-            <Link href={"#"} className="relative">
-              <i className="bi bi-heart text-gray-600 text-xl hover:text-(--prim-color) transition-all">
+            <Link href={"/UI-Components/Pages/wishlist"} className="relative">
+              <i className="bi bi-heart text-gray-600 text-xl hover:text-[var(--prim-color)] transition-all">
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-(--prim-color) text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-[var(--prim-color)] text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
                     {wishlistCount}
                   </span>
                 )}
@@ -189,16 +189,16 @@ export default function BottomNav() {
             </Link>
             {/* Cart */}
             <Link href={"#"} className="relative">
-              <i className="bi bi-cart text-gray-600 text-xl hover:text-(--prim-color) transition-all">
+              <i className="bi bi-cart text-gray-600 text-xl hover:text-[var(--prim-color)] transition-all">
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-(--prim-color) text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-[var(--prim-color)] text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
               </i>
             </Link>
           </div>
-          <button className="nav-button cursor-pointer font-bold bg-(--prim-color) text-white p-3">
+        <button className="nav-button cursor-pointer font-bold bg-[var(--prim-color)] text-white p-3">
             <i className="bi bi-telephone pe-2 text-xl">+84 901 352 651</i>
           </button>
         </div>
@@ -237,7 +237,7 @@ export default function BottomNav() {
                           <Link
                             key={item.label}
                             href={overrideHref ?? "#"}
-                            className="block px-4 py-2 rounded-md hover:bg-(--prim-light) transition-all"
+                            className="block px-4 py-2 rounded-md hover:bg-[var(--prim-light)] transition-all"
                           >
                             {item.label}
                           </Link>

@@ -131,7 +131,7 @@ export default function MiddleNav() {
         {/* Wishlist & Cart */}
         <div className="hidden lg:flex items-center space-x-6">
           {/* Wishlist */}
-          <Link href={"#"} className="relative">
+          <Link href={"/UI-Components/Pages/wishlist"} className="relative">
             <i className="bi bi-heart text-gray-600 text-xl hover:text-[var(--prim-color)] transition-all">
               {wishlistCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-[var(--prim-color)] text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
