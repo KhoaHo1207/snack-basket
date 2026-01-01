@@ -188,7 +188,7 @@ export default function BottomNav() {
               </i>
             </Link>
             {/* Cart */}
-            <Link href={"#"} className="relative">
+            <Link href={"/UI-Components/Pages/cart"} className="relative">
               <i className="bi bi-cart text-gray-600 text-xl hover:text-[var(--prim-color)] transition-all">
                 {cartCount > 0 && (
                   <span className="absolute -top-2 -right-2 bg-[var(--prim-color)] text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
@@ -198,7 +198,7 @@ export default function BottomNav() {
               </i>
             </Link>
           </div>
-        <button className="nav-button cursor-pointer font-bold bg-[var(--prim-color)] text-white p-3">
+          <button className="nav-button cursor-pointer font-bold bg-[var(--prim-color)] text-white p-3">
             <i className="bi bi-telephone pe-2 text-xl">+84 901 352 651</i>
           </button>
         </div>

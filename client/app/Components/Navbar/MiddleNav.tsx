@@ -141,7 +141,7 @@ export default function MiddleNav() {
             </i>
           </Link>
           {/* Cart */}
-          <Link href={"#"} className="relative">
+          <Link href={"/UI-Components/Pages/cart"} className="relative">
             <i className="bi bi-cart text-gray-600 text-xl hover:text-[var(--prim-color)] transition-all">
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-[var(--prim-color)] text-white text-xs font-semibold rounded-full size-5 flex items-center justify-center">
