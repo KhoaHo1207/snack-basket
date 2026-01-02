@@ -1,3 +1,4 @@
+import BestSales from "./BestSales/BestSales";
 import Category from "./Categories/category";
 import Deals from "./Deals/Deals";
 import Hero from "./Header/Hero";
@@ -18,6 +19,7 @@ export default function Index() {
       <Recommend />
       <HotDeals />
       <Vendors />
+      <BestSales />
     </>
   );
 }

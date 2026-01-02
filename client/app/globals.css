@@ -209,6 +209,10 @@
   border-top-left-radius: 50px;
   border-bottom-right-radius: 50px;
 }
+
+.best-sale-banner {
+  background-image: url(../public/BestSales/special-snacks.png);
+}
 /* MQ Sections */
 @media (max-width: 991px) {
   .Hero {

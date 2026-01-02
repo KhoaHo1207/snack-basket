@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "BestSales1",
+    "image": "/BestSales/best-sell1.png",
+    "title": "Taylor Farms Broccoli Fruits",
+    "price": "$15.99",
+    "lessprice": "$28.99",
+    "review": "(17k)",
+    "sold": "18/35",
+    "sale": "35%"
+  },
+  {
+    "Id": "BestSales2",
+    "image": "/BestSales/best-sell2.png",
+    "title": "Taylor Farms Broccoli Florets Fruits",
+    "price": "$18.99",
+    "lessprice": "$20.99",
+    "review": "(17k)",
+    "sold": "22/40",
+    "sale": "30%"
+  },
+  {
+    "Id": "BestSales3",
+    "image": "/BestSales/best-sell3.png",
+    "title": "Taylor Farms Broccoli Florets Vegetables",
+    "price": "$18.99",
+    "lessprice": "$32.99",
+    "review": "(17k)",
+    "sold": "15/25",
+    "sale": "New"
+  },
+  {
+    "Id": "BestSales4",
+    "image": "/BestSales/best-sell4.png",
+    "title": "Taylor Farms Broccoli Florets Fruits",
+    "price": "$20.99",
+    "lessprice": "$30.99",
+    "review": "(17k)",
+    "sold": "8/15",
+    "sale": "30%"
+  }
+]
