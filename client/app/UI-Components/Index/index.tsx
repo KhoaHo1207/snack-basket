@@ -5,6 +5,7 @@ import HotDeals from "./HotDeals/Hot-Deals";
 import Offers from "./Offer-Banner/Offers";
 import Banners from "./Promotion-Banner/Banners";
 import Recommend from "./Recommend/Recommend";
+import Vendors from "./Vendors/Vendors";
 
 export default function Index() {
   return (
@@ -16,6 +17,7 @@ export default function Index() {
       <Offers />
       <Recommend />
       <HotDeals />
+      <Vendors />
     </>
   );
 }

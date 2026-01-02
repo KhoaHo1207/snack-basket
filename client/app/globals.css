@@ -110,6 +110,15 @@
   z-index: -1;
   opacity: 0.1;
 }
+
+/* Vendors */
+.vendor-wrap {
+  transition: var(--transition-regular);
+}
+.vendor-wrap:hover img {
+  transform: scale(1.1);
+}
+
 /* Animations */
 
 @keyframes Anim-top {
