@@ -213,6 +213,13 @@
 .best-sale-banner {
   background-image: url(../public/BestSales/special-snacks.png);
 }
+
+.banner {
+  background-color: var(--prim-color);
+  background-image: url(../public/delivery-bg.png);
+  background-position: center center;
+  background-size: cover;
+}
 /* MQ Sections */
 @media (max-width: 991px) {
   .Hero {
@@ -226,6 +233,14 @@
   }
   .category-info h2 {
     font-size: 1rem;
+  }
+
+  .banner-img1 {
+    width: 30%;
+  }
+  .banner-img2 {
+    width: 30%;
+    top: 40%;
   }
 }
 
@@ -249,5 +264,14 @@
   .banner-content h2 {
     font-size: 2.8rem;
     line-height: 3.5rem;
+  }
+  .banner-img1,
+  .banner-img2 {
+    display: none;
+  }
+
+  .banner h1 {
+    font-size: 1.6rem;
+    line-height: 3rem;
   }
 }
