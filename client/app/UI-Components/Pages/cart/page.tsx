@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 
 type CartItem = {
@@ -15,6 +15,14 @@ type CartItem = {
 };
 export default function Cart() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const estimatedTaxes = 10;
+  const subtotal = useMemo(() => {
+    return cartItems.reduce((acc, item) => {
+      const quantity = item.qty ?? 1;
+      const priceNum = parseFloat(item.price.replace(/[^0-9.-]+/g, "")) || 0;
+      return acc + priceNum * quantity;
+    }, 0);
+  }, [cartItems]);
 
   useEffect(() => {
     const loadCart = () => {
@@ -88,10 +96,10 @@ export default function Cart() {
                         Price
                       </th>
                       <th className="py-3 px-4 Unbounded border-r border-gray-300 font-normal text-left">
-                        Stock Status
+                        Quantity
                       </th>
                       <th className="py-3 px-4 Unbounded border-r border-gray-300 font-normal text-left cursor-pointer">
-                        Add to Cart
+                        Subtotal
                       </th>
                       <th className="py-3 px-4 Unbounded font-normal text-left cursor-pointer">
                         Remove
@@ -256,6 +264,38 @@ export default function Cart() {
                     );
                   })}
                 </div>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-1/4 sticky h-full top-22 left-40">
+              <div className="bg-[var(--prim-light)] p-5 rounded-lg shadow">
+                <h2 className="text-xl font-semibold mb-4">Cart Total</h2>
+                <div className="flex justify-between mb-2">
+                  <span className="Unbounded">Subtotal</span>
+                  <span className="Unbounded">${subtotal.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between mb-2">
+                  <span className="Unbounded">Esimated Delivery</span>
+                  <span className="Unbounded">Free</span>
+                </div>
+                <div className="flex justify-between mb-2">
+                  <span className="Unbounded">Esimated Taxes</span>
+                  <span className="Unbounded">
+                    USD {estimatedTaxes.toFixed(2)}
+                  </span>
+                </div>
+                <div className="flex justify-between font-bold border-t border-gray-400 pt-2 text-lg mb-2">
+                  <span className="Unbounded">Total</span>
+                  <span className="Unbounded">
+                    ${(subtotal + estimatedTaxes).toFixed(2)}
+                  </span>
+                </div>
+
+                <button className="w-full mt-2 py-3 cursor-pointer bg-[var(--prim-color)] text-white rounded-lg hover:bg-black transition-all">
+                  <Link href={"/UI-Components/Pages/checkout"}>
+                    Proceed To Checkout
+                  </Link>
+                </button>
               </div>
             </div>
           </div>
