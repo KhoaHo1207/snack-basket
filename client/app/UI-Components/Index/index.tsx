@@ -1,10 +1,13 @@
 import Banner from "./Banner/Banner";
+import Benefits from "./Benefits/Benefits";
 import BestSales from "./BestSales/BestSales";
 import Brands from "./Brands/Brands";
 import Category from "./Categories/category";
 import Deals from "./Deals/Deals";
 import Hero from "./Header/Hero";
 import HotDeals from "./HotDeals/Hot-Deals";
+import Arrivals from "./New-Arrivals/Arrivals";
+import Newsletter from "./Newsletter/Newsletter";
 import Offers from "./Offer-Banner/Offers";
 import OrganicFood from "./Organic-Food/OrganicFood";
 import Banners from "./Promotion-Banner/Banners";
@@ -28,6 +31,9 @@ export default function Index() {
       <OrganicFood />
       <ShortProducts />
       <Brands />
+      <Arrivals />
+      <Benefits />
+      <Newsletter />
     </>
   );
 }
