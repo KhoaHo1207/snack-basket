@@ -8,6 +8,7 @@ import Offers from "./Offer-Banner/Offers";
 import OrganicFood from "./Organic-Food/OrganicFood";
 import Banners from "./Promotion-Banner/Banners";
 import Recommend from "./Recommend/Recommend";
+import ShortProducts from "./Short-Products/Products";
 import Vendors from "./Vendors/Vendors";
 
 export default function Index() {
@@ -24,6 +25,7 @@ export default function Index() {
       <BestSales />
       <Banner />
       <OrganicFood />
+      <ShortProducts />
     </>
   );
 }
