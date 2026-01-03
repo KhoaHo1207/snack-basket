@@ -41,8 +41,8 @@ export default function Category() {
   return (
     <div className="px-[8%] lg:px-[12%] py-10">
       <Swiper
-        slidesPerView={8}
-        spaceBetween={20}
+        slidesPerView={1}
+        spaceBetween={12}
         loop={true}
         modules={[Autoplay]}
         autoplay={{
@@ -50,12 +50,12 @@ export default function Category() {
         }}
         speed={1500}
         breakpoints={{
-          1200: { slidesPerView: 8 },
+          1200: { slidesPerView: 7 },
           991: { slidesPerView: 5 },
           768: { slidesPerView: 4 },
           576: { slidesPerView: 3 },
-          480: { slidesPerView: 3 },
-          320: { slidesPerView: 3 },
+          480: { slidesPerView: 2 },
+          320: { slidesPerView: 1 },
         }}
       >
         {categories.map((category, index) => (
