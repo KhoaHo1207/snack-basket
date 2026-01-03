@@ -1,0 +1,62 @@
+[
+  {
+    "Id": "Organic1",
+    "image": "/Organic-Food/product-img1.png",
+    "title": "Taylor Farms Broccoli fresh Fruits",
+    "price": "$15.99",
+    "lessprice": "$28.99",
+    "review": "(17k)",
+    "sold": "18/35",
+    "sale": "35%"
+  },
+  {
+    "Id": "Organic2",
+    "image": "/Organic-Food/product-img2.png",
+    "title": "Taylor Farms Broccoli Florets Fruits",
+    "price": "$18.99",
+    "lessprice": "$20.99",
+    "review": "(17k)",
+    "sold": "22/40",
+    "sale": "30%"
+  },
+  {
+    "Id": "Organic3",
+    "image": "/Organic-Food/product-img3.png",
+    "title": "Taylor Farms Broccoli Florets Vegetables",
+    "price": "$18.99",
+    "lessprice": "$32.99",
+    "review": "(17k)",
+    "sold": "15/25",
+    "sale": "New"
+  },
+  {
+    "Id": "Organic4",
+    "image": "/Organic-Food/product-img4.png",
+    "title": "Taylor Farms Broccoli Florets Fruits",
+    "price": "$20.99",
+    "lessprice": "$30.99",
+    "review": "(17k)",
+    "sold": "8/15",
+    "sale": "30%"
+  },
+  {
+    "Id": "Organic5",
+    "image": "/Organic-Food/product-img5.png",
+    "title": "Taylor Farms Broccoli Florets Fruits",
+    "price": "$20.99",
+    "lessprice": "$30.99",
+    "review": "(17k)",
+    "sold": "8/15",
+    "sale": "30%"
+  },
+  {
+    "Id": "Organic6",
+    "image": "/Organic-Food/product-img6.png",
+    "title": "Taylor Farms Broccoli Florets Fruits",
+    "price": "$20.99",
+    "lessprice": "$30.99",
+    "review": "(17k)",
+    "sold": "8/15",
+    "sale": "30%"
+  }
+]
