@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Merienda, Unbounded } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
+import Footer from "./Components/Footer/Footer";
 const unbo = Unbounded({
   variable: "--font-unbounded",
   subsets: ["latin"],
@@ -40,7 +41,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
-
+        <Footer />
         <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>

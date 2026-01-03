@@ -4,6 +4,12 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 import BestDeals from "@/app/JsonData/BestDeals.json";
+import BestSales from "@/app/JsonData/BestSales.json";
+import HotDeals from "@/app/JsonData/HotDeals.json";
+import Arrivals from "@/app/JsonData/NewArrivals.json";
+import OrganicFood from "@/app/JsonData/OrganicFood.json";
+import Recommend from "@/app/JsonData/Recommend.json";
+import ShortProducts from "@/app/JsonData/ShortProducts.json";
 
 interface ProductType {
   Id: string;
@@ -22,7 +28,27 @@ export default function MiddleNav() {
   const [searchTerm, setSerachterm] = useState("");
   const [results, setResults] = useState<ProductType[]>([]);
 
-  const allProducts: ProductType[] = useMemo(() => [...BestDeals], []);
+  const allProducts: ProductType[] = useMemo(
+    () => [
+      ...BestDeals,
+      ...Arrivals,
+      ...BestSales,
+      ...OrganicFood,
+      ...HotDeals,
+      ...Recommend,
+      ...(ShortProducts?.Featured?.map((p) => ({ ...p, Id: p.Id as string })) ||
+        []),
+      ...(ShortProducts?.TopSelling?.map((p) => ({
+        ...p,
+        Id: p.Id as string,
+      })) || []),
+      ...(ShortProducts?.OnSale?.map((p) => ({ ...p, Id: p.Id as string })) ||
+        []),
+      ...(ShortProducts?.TopRated?.map((p) => ({ ...p, Id: p.Id as string })) ||
+        []),
+    ],
+    []
+  );
 
   // Filter Product By Search
   useEffect(() => {
