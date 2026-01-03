@@ -1,5 +1,6 @@
 import Banner from "./Banner/Banner";
 import BestSales from "./BestSales/BestSales";
+import Brands from "./Brands/Brands";
 import Category from "./Categories/category";
 import Deals from "./Deals/Deals";
 import Hero from "./Header/Hero";
@@ -26,6 +27,7 @@ export default function Index() {
       <Banner />
       <OrganicFood />
       <ShortProducts />
+      <Brands />
     </>
   );
 }
