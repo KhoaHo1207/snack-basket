@@ -1,48 +1,75 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import products from "@/app/JsonData/Recommend.json";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import Link from "next/link";
+import { ProductType } from "../ProductDetails/ProductDetails";
 export default function Products() {
   const [price, setPrice] = useState(100);
   const [discount50, setDiscount50] = useState(false);
   const [discount30, setDiscount30] = useState(false);
   const [isNew, setIsNew] = useState(false);
 
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const productList: ProductType[] = useMemo(
+    () =>
+      (products as ProductType[]).map((p) => ({
+        ...p,
+        sale: p.sale ?? "",
+        review: p.review ?? "",
+        sold: p.sold ?? "",
+        lessprice: p.lessprice ?? "",
+      })),
+    []
+  );
 
-  const handleAddToCart = (product: any) => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const existingProduct = cart.find((item: any) => item.Id === product.Id);
+  const handleAddToCart = (product: ProductType) => {
+    const cart: ProductType[] = JSON.parse(localStorage.getItem("cart") || "[]");
+    const existingProduct = cart.find((item) => item.Id === product.Id);
 
     if (existingProduct) {
-      existingProduct.quantity += 1;
+      const baseQty =
+        typeof existingProduct.quantity === "number"
+          ? existingProduct.quantity
+          : typeof existingProduct.qty === "number"
+          ? existingProduct.qty
+          : 0;
+      const updated = baseQty + 1;
+      existingProduct.quantity = updated;
+      existingProduct.qty = updated;
     } else {
-      cart.push({ ...product, quantity: 1 });
+      cart.push({ ...product, quantity: 1, qty: 1 });
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     window.dispatchEvent(new Event("storage"));
     toast.success("Product added to cart");
   };
 
-  const handleAddToWishlist = (product: any) => {
-    const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
-    const existingWishlist = wishlist.find(
-      (item: any) => item.Id === product.Id
+  const handleAddToWishlist = (product: ProductType) => {
+    const wishlist: ProductType[] = JSON.parse(
+      localStorage.getItem("wishlist") || "[]"
     );
+    const existingWishlist = wishlist.find((item) => item.Id === product.Id);
 
     if (existingWishlist) {
-      existingWishlist.quantity += 1;
+      const baseQty =
+        typeof existingWishlist.quantity === "number"
+          ? existingWishlist.quantity
+          : typeof existingWishlist.qty === "number"
+          ? existingWishlist.qty
+          : 0;
+      const updated = baseQty + 1;
+      existingWishlist.quantity = updated;
+      existingWishlist.qty = updated;
     } else {
-      wishlist.push({ ...product, quantity: 1 });
+      wishlist.push({ ...product, quantity: 1, qty: 1 });
     }
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
     window.dispatchEvent(new Event("wishlist"));
     toast.success("Product added to wishlist");
   };
 
-  useEffect(() => {
-    let result = products;
+  const filteredProducts = useMemo(() => {
+    let result = productList;
 
     result = result.filter((p) => {
       const productPrice = parseFloat(p.price.replace(/[^0-9.-]+/g, ""));
@@ -50,18 +77,25 @@ export default function Products() {
     });
 
     if (discount50) {
-      result = result.filter((p) => p.sale.includes("50%"));
+      result = result.filter((p) => p.sale?.includes("50%"));
     }
     if (discount30) {
-      result = result.filter((p) => p.sale.includes("30%"));
+      result = result.filter((p) => p.sale?.includes("30%"));
     }
     if (isNew) {
       result = result.filter((p) => p.sale === "New");
     }
-    setFilteredProducts(result);
-  }, [price, discount30, discount50, isNew]);
+    return result;
+  }, [price, discount30, discount50, isNew, productList]);
 
-  const randomProducts = products[Math.floor(Math.random() * products.length)];
+  const randomProduct = useMemo(
+    () => (productList.length ? productList[0] : null),
+    [productList]
+  );
+
+  if (!randomProduct) {
+    return null;
+  }
 
   return (
     <div className="px-[8%] lg:px-[12%] py-10">
@@ -73,7 +107,12 @@ export default function Products() {
               <div className="border-b w-full border-gray-300 pb-3 flex items-center justify-between">
                 <h2 className="text-xl Unbounded">Product Category</h2>
                 <button
-                  onClick={() => setFilteredProducts(products)}
+                  onClick={() => {
+                    setPrice(100);
+                    setDiscount50(false);
+                    setDiscount30(false);
+                    setIsNew(false);
+                  }}
                   className="border border-gray-300 px-2 py-1 rounded cursor-pointer hover:border-gray-500 transition-all duration-300"
                 >
                   Reset
@@ -152,13 +191,13 @@ export default function Products() {
             {/* Random Products */}
             <div className="mt-3">
               <div
-                key={randomProducts.Id}
+                key={randomProduct.Id}
                 className="product-wrap border border-gray-300 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-all hover:border-[var(--prim-color)] cursor-pointer duration-300"
               >
                 <div className="relative flex justify-center items-center w-full h-50">
                   <Image
-                    src={randomProducts.image}
-                    alt={randomProducts.title}
+                    src={randomProduct.image}
+                    alt={randomProduct.title}
                     width={180}
                     height={180}
                     className="object-contain mt-10"
@@ -166,35 +205,35 @@ export default function Products() {
 
                   <div
                     className="absolute top-0 right-0 w-[50px] h-[50px] rounded-full bg-[var(--prim-light)] text-[var(--prim-color)] flex items-center justify-center hover:bg-[var(--prim-color)] hover:text-[var(--prim-light)] transition-all duration-300 cursor-pointer"
-                    onClick={() => handleAddToWishlist(randomProducts)}
+                    onClick={() => handleAddToWishlist(randomProduct)}
                   >
                     <i className="bi bi-balloon-heart text-xl"></i>
                   </div>
                   <span
                     className={`absolute off-product top-0 left-0 px-4 py-2 Merienda text-xs font-bold text-white rounded ${
-                      randomProducts.sale === "New"
+                      randomProduct.sale === "New"
                         ? "bg-yellow-400"
-                        : randomProducts.sale.includes("%")
+                        : randomProduct.sale?.includes("%")
                         ? "bg-red-500"
                         : "opacity-0"
                     } `}
                   >
-                    {randomProducts.sale}
+                    {randomProduct.sale ?? ""}
                   </span>
                 </div>
                 <Link
                   href={{
                     pathname: "/UI-Components/Shop",
-                    query: { id: randomProducts.Id },
+                    query: { id: randomProduct.Id },
                   }}
                 >
                   <div className="space-y-1 mt-5 product-info">
                     <div className="flex items-center gap-2">
                       <span className="text-gray-500 text-sm line-through">
-                        {randomProducts.lessprice}
+                        {randomProduct.lessprice}
                       </span>
                       <span className="text-xl font-semibold">
-                        {randomProducts.price}
+                        {randomProduct.price}
                       </span>
                       <span className="text-gray-500 text-sm">/Qty</span>
                     </div>
@@ -203,15 +242,15 @@ export default function Products() {
                       By Lucky Supermarket
                     </h6>
                     <h2 className="text-base font-normal Unbounded my-2 hover:text-[var(--prim-color)] transition-all duration-300">
-                      {randomProducts.title}
+                      {randomProduct.title}
                     </h2>
                     <span className="flex items-center text-yellow-500 text-base">
                       <i className="bi bi-star-fill me-1"></i>
-                      {randomProducts.review}
+                      {randomProduct.review}
                     </span>
 
                     <h3 className="mt-2 Unbounded text-base text-gray-600">
-                      Sold: {randomProducts.sold}
+                      Sold: {randomProduct.sold}
                     </h3>
                   </div>
                 </Link>
@@ -244,13 +283,13 @@ export default function Products() {
                     <span
                       className={`absolute off-product top-0 left-0 px-4 py-2 Merienda text-xs font-bold text-white rounded ${
                         product.sale === "New"
-                          ? "bg-yellow-400"
-                          : product.sale.includes("%")
-                          ? "bg-red-500"
-                          : "opacity-0"
+                        ? "bg-yellow-400"
+                        : product.sale?.includes("%")
+                        ? "bg-red-500"
+                        : "opacity-0"
                       } `}
                     >
-                      {product.sale}
+                    {product.sale ?? ""}
                     </span>
                   </div>
                   <Link

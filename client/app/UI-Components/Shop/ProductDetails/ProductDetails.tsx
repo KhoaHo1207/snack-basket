@@ -6,7 +6,7 @@ import { useState } from "react";
 import BestSales from "../../Index/BestSales/BestSales";
 import Banner from "../../Index/Banner/Banner";
 import Deals from "../../Index/Deals/Deals";
-interface ProductType {
+export interface ProductType {
   Id: string;
   image: string;
   title: string;

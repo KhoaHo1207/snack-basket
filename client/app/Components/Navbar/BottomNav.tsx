@@ -57,7 +57,7 @@ const navLinks: NavLink[] = [
       },
       {
         label: "Blog Details",
-        href: "",
+        href: "/UI-Components/Blogs",
       },
     ],
   },
