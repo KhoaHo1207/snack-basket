@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "image": "/Blogs/blog-img1.png",
+    "title": "Top grocery deals to save big this week",
+    "tag": "Offers & Discounts",
+    "pere": "Shopping smart means knowing where to find the best deals. Weekly grocery offers can help families save money while still enjoying fresh and quality products.",
+    "pere2": "Bulk-buying staples like rice, pulses, and cooking oil during discount sales can reduce monthly expenses significantly.",
+    "pere3": "Keep an eye on limited-time deals in fruits, vegetables, and packaged foods to maximize savings without compromising nutrition.",
+    "date": "July 15, 2025",
+    "comment": "10 Comments"
+  },
+  {
+    "id": 2,
+    "image": "/Blogs/blog-img2.png",
+    "title": "How online grocery apps are changing shopping",
+    "tag": "Digital Grocery",
+    "pere": "Online grocery shopping is more popular than ever, offering the convenience of browsing and purchasing essentials from home.",
+    "pere2": "Apps now provide features like order tracking, instant discounts, and personalized recommendations based on past purchases.",
+    "pere3": "With just a few taps, customers can restock their kitchen and save valuable time, making grocery shopping stress-free.",
+    "date": "July 16, 2025",
+    "comment": "7 Comments"
+  },
+  {
+    "id": 3,
+    "image": "/Blogs/blog-img3.jpg",
+    "title": "Smart ways to manage your monthly grocery budget",
+    "tag": "Budget Tips",
+    "pere": "Budgeting groceries can help prevent overspending and reduce waste. Planning meals ahead of time ensures you only buy what’s needed.",
+    "pere2": "Using shopping lists, comparing prices, and tracking expenses can make a huge difference in monthly savings.",
+    "pere3": "Digital wallets and cashback offers from grocery apps also help maximize your budget while ensuring quality purchases.",
+    "date": "July 17, 2025",
+    "comment": "12 Comments"
+  },
+  {
+    "id": 4,
+    "image": "/Blogs/blog-img4.jpg",
+    "title": "Essential packaged foods for every kitchen",
+    "tag": "Staples",
+    "pere": "Packaged foods like flour, rice, pulses, and oils are the backbone of every kitchen. Stocking them smartly ensures you’re never short of essentials.",
+    "pere2": "Choosing fortified and organic variants can improve health benefits while maintaining taste and quality.",
+    "pere3": "Always check expiry dates and storage conditions to keep packaged foods fresh and safe for long-term use.",
+    "date": "July 18, 2025",
+    "comment": "9 Comments"
+  },
+  {
+    "id": 5,
+    "image": "/Blogs/blog-img5.jpg",
+    "title": "Why fresh produce should be your first choice",
+    "tag": "Fruits & Vegetables",
+    "pere": "Fresh produce is packed with nutrients and flavors that packaged items can’t match. Seasonal fruits and vegetables are especially rich in vitamins.",
+    "pere2": "Buying local ensures freshness, supports farmers, and reduces carbon footprints caused by long transportation.",
+    "pere3": "Incorporating a colorful variety of produce in meals boosts immunity and makes food more enjoyable.",
+    "date": "July 19, 2025",
+    "comment": "6 Comments"
+  }
+]

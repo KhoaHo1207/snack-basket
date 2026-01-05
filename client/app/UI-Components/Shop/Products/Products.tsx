@@ -23,7 +23,9 @@ export default function Products() {
   );
 
   const handleAddToCart = (product: ProductType) => {
-    const cart: ProductType[] = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cart: ProductType[] = JSON.parse(
+      localStorage.getItem("cart") || "[]"
+    );
     const existingProduct = cart.find((item) => item.Id === product.Id);
 
     if (existingProduct) {
@@ -283,13 +285,13 @@ export default function Products() {
                     <span
                       className={`absolute off-product top-0 left-0 px-4 py-2 Merienda text-xs font-bold text-white rounded ${
                         product.sale === "New"
-                        ? "bg-yellow-400"
-                        : product.sale?.includes("%")
-                        ? "bg-red-500"
-                        : "opacity-0"
+                          ? "bg-yellow-400"
+                          : product.sale?.includes("%")
+                          ? "bg-red-500"
+                          : "opacity-0"
                       } `}
                     >
-                    {product.sale ?? ""}
+                      {product.sale ?? ""}
                     </span>
                   </div>
                   <Link

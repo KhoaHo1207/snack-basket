@@ -49,7 +49,7 @@ const navLinks: NavLink[] = [
   },
   {
     label: "Blog",
-    href: "#",
+    href: "/UI-Components/Blogs",
     dropdown: [
       {
         label: "Blog",
@@ -57,7 +57,7 @@ const navLinks: NavLink[] = [
       },
       {
         label: "Blog Details",
-        href: "/UI-Components/Blogs",
+        href: "/UI-Components/Blogs/blogDetails?id=1",
       },
     ],
   },
@@ -132,22 +132,15 @@ export default function BottomNav() {
                   {link.label} <i className="ri-arrow-down-s-line"></i>
                 </Link>
                 <div className="absolute left-0 top-full hidden group-hover:block bg-white shadow-xl p-2 border border-gray-100 rounded-lg min-w-[150px]">
-                  {link.dropdown.map((item) => {
-                    const overrideHref =
-                      item.label === "Shop Details" ||
-                      item.label === "Blog Details"
-                        ? "/UI-Components/Shop"
-                        : item.href;
-                    return (
-                      <Link
-                        key={item.label}
-                        href={overrideHref ?? "#"}
-                        className="block px-4 py-2 rounded-md hover:bg-[var(--prim-light)] transition-all"
-                      >
-                        {item.label}
-                      </Link>
-                    );
-                  })}
+                  {link.dropdown.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href ?? "#"}
+                      className="block px-4 py-2 rounded-md hover:bg-[var(--prim-light)] transition-all"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
             ) : (
@@ -227,22 +220,15 @@ export default function BottomNav() {
                   </button>
                   {openDropdown[link.label] && (
                     <div className="flex flex-col pl-4 space-y-1 pb-2">
-                      {link.dropdown.map((item) => {
-                        const overrideHref =
-                          item.label === "Shop Details" ||
-                          item.label === "Blog Details"
-                            ? "/UI-Components/Shop"
-                            : item.href;
-                        return (
-                          <Link
-                            key={item.label}
-                            href={overrideHref ?? "#"}
-                            className="block px-4 py-2 rounded-md hover:bg-[var(--prim-light)] transition-all"
-                          >
-                            {item.label}
-                          </Link>
-                        );
-                      })}
+                      {link.dropdown.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href ?? "#"}
+                          className="block px-4 py-2 rounded-md hover:bg-[var(--prim-light)] transition-all"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </div>
