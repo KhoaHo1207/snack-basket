@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const { generateAccessToken, generateRefreshToken } = require("../utils/jwt");
 const generateOTP = require("../utils/generateOTP");
 const sendEmail = require("../utils/sendEmail");
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -190,4 +191,46 @@ const verifyOTP = async (req, res) => {
   }
 };
 
-module.exports = { login, register, verifyOTP };
+const resendOTP = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+    if (user.isVerified) {
+      return res.status(400).json({
+        success: false,
+        message: "User already verified",
+      });
+    }
+    const { otp, hashedOTP } = await generateOTP();
+    user.otp = hashedOTP;
+    user.otpExpire = new Date(Date.now() + 10 * 60 * 1000);
+    await user.save();
+    await sendEmail({
+      to: email,
+      subject: "Verify your account",
+      html: `
+        <h2>Verify your account</h2>
+        <p>Your OTP code:</p>
+        <h1>${otp}</h1>
+        <p>Expires in 10 minutes</p>
+      `,
+    });
+    return res.status(200).json({
+      success: true,
+      message: "OTP resent successfully",
+    });
+  } catch (error) {
+    console.log("Resend OTP failed", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+module.exports = { login, register, verifyOTP, resendOTP };
