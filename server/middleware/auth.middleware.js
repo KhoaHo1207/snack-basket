@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+
 const protectRoute = async (req, res, next) => {
   try {
     const token = req.headers.authorization?.split(" ")[1];
@@ -25,22 +27,24 @@ const protectRoute = async (req, res, next) => {
   }
 };
 
-const checkRole = (req, res, next, roles) => {
-  try {
-    const { role } = req.user;
-    if (!roles.includes(role)) {
-      return res.status(403).json({
+const checkRole = (roles = []) => {
+  return async (req, res, next) => {
+    try {
+      const { role } = req.user || {};
+      if (!role || !roles.includes(role)) {
+        return res.status(403).json({
+          success: false,
+          message: "Forbidden",
+        });
+      }
+      next();
+    } catch (error) {
+      console.log("Check role failed", error);
+      return res.status(500).json({
         success: false,
-        message: "Forbidden",
+        message: "Internal server error",
       });
     }
-    next();
-  } catch (error) {
-    console.log("Check role failed", error);
-    return res.status(500).json({
-      success: false,
-      message: "Internal server error",
-    });
-  }
+  };
 };
 module.exports = { protectRoute, checkRole };
