@@ -10,21 +10,16 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    lessPrice: {
-      type: Number,
-      required: true,
-    },
+
     sale: {
-      type: String,
-      enum: ["50%", "30%", "New"],
-      default: "New",
+      type: Number,
     },
     image: {
       type: String,
       required: true,
     },
     images: {
-      type: String,
+      type: Array,
     },
     reviewCount: {
       type: Number,

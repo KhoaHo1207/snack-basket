@@ -5,7 +5,6 @@ const createProduct = async (req, res) => {
     const {
       title,
       price,
-      lessPrice,
       sale,
       image,
       images,
@@ -28,12 +27,6 @@ const createProduct = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Price is required",
-      });
-    }
-    if (!lessPrice) {
-      return res.status(400).json({
-        success: false,
-        message: "Less price is required",
       });
     }
     if (!sale) {
@@ -99,7 +92,6 @@ const createProduct = async (req, res) => {
     const product = await Product.create({
       title,
       price,
-      lessPrice,
       sale,
       image,
       images,
