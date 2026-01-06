@@ -1,47 +1,38 @@
 "use client";
 
-import { Suspense, useMemo } from "react";
+import { Suspense, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import BestDeals from "@/app/JsonData/BestDeals.json";
-import BestSales from "@/app/JsonData/BestSales.json";
-import HotDeals from "@/app/JsonData/HotDeals.json";
-import Arrivals from "@/app/JsonData/NewArrivals.json";
-import OrganicFood from "@/app/JsonData/OrganicFood.json";
-import Recommend from "@/app/JsonData/Recommend.json";
-import ShortProducts from "@/app/JsonData/ShortProducts.json";
 import ProductDetails, {
   ProductType,
 } from "./ProductDetails/ProductDetails";
 import Products from "./Products/Products";
+import { useProductStore } from "@/app/store/productStore";
 
-type UnknownProduct = Record<string, unknown>;
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000/api";
 
-const normalizeProduct = (item: UnknownProduct): ProductType => {
-  const toStringSafe = (value: unknown, fallback = ""): string =>
-    typeof value === "string"
-      ? value
-      : typeof value === "number"
-      ? String(value)
-      : fallback;
+const formatPrice = (value: unknown) => {
+  if (typeof value === "number") return `$${value.toFixed(2)}`;
+  if (typeof value === "string") return value;
+  return "$0";
+};
 
-  const image = toStringSafe(
-    item.image || item.ProductImage || item.ProductImg || item.img,
-    ""
-  );
-  const price = toStringSafe(item.price || item.Price, "$0");
-  const title = toStringSafe(
-    item.title || item.Name || item.ProductName,
-    "Product"
-  );
+const normalizeProduct = (item: any): ProductType => {
+  const title = item.title ?? item.Name ?? item.ProductName ?? "Product";
   return {
-    Id: toStringSafe(item.Id ?? item.id ?? item.ProductId ?? title, title),
-    image,
+    Id: String(item._id ?? item.Id ?? title),
+    image:
+      item.image || item.ProductImage || item.ProductImg || item.img || "",
     title,
-    lessprice: toStringSafe(item.lessprice, undefined as unknown as string),
-    price,
-    review: toStringSafe(item.review, undefined as unknown as string),
-    sold: toStringSafe(item.sold, undefined as unknown as string),
-    sale: toStringSafe(item.sale, undefined as unknown as string),
+    lessprice: formatPrice(item.lessprice),
+    price: formatPrice(item.price),
+    review: String(item.reviewCount ?? item.review ?? ""),
+    sold: String(item.sold ?? ""),
+    sale:
+      typeof item.sale === "number"
+        ? `${item.sale}%`
+        : item.sale ?? "",
     qty:
       typeof item.qty === "number"
         ? item.qty
@@ -57,31 +48,42 @@ const normalizeProduct = (item: UnknownProduct): ProductType => {
   };
 };
 
+const fetchProducts = async (): Promise<ProductType[]> => {
+  const res = await fetch(`${API_BASE}/product`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error("Failed to fetch products");
+  }
+  const json = await res.json();
+  const items = Array.isArray(json.data) ? json.data : [];
+  return items.map(normalizeProduct);
+};
+
 function ShopPageContent() {
-  const allProducts: ProductType[] = useMemo(() => {
-    const raw = [
-      ...BestDeals,
-      ...Arrivals,
-      ...BestSales,
-      ...OrganicFood,
-      ...HotDeals,
-      ...Recommend,
-      ...(ShortProducts?.Featured || []),
-      ...(ShortProducts?.TopSelling || []),
-      ...(ShortProducts?.OnSale || []),
-      ...(ShortProducts?.TopRated || []),
-    ];
-    return raw.map(normalizeProduct);
-  }, []);
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+  });
+  const setProducts = useProductStore((s) => s.setProducts);
+  const products = data ?? [];
+
+  useEffect(() => {
+    if (products.length) {
+      setProducts(products);
+    }
+  }, [products, setProducts]);
 
   const searchParams = useSearchParams();
   const productId = searchParams.get("id");
+
+  if (isLoading) return <div className="px-[8%] py-10">Loading...</div>;
+  if (error) return <div className="px-[8%] py-10">Failed to load products</div>;
+
   return (
     <div className="">
       {productId ? (
-        <ProductDetails id={productId} products={allProducts} />
+        <ProductDetails id={productId} products={products} />
       ) : (
-        <Products />
+        <Products products={products} />
       )}
     </div>
   );

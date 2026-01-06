@@ -12,6 +12,7 @@
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
     "@iconify/react": "^6.0.2",
+    "@tanstack/react-query": "^5.62.8",
     "bootstrap-icons": "^1.13.1",
     "countup.js": "^2.9.0",
     "next": "16.1.1",
@@ -20,7 +21,8 @@
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
     "remixicon": "^4.8.0",
-    "swiper": "^12.0.3"
+    "swiper": "^12.0.3",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react";
-import products from "@/app/JsonData/Recommend.json";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import Link from "next/link";
 import { ProductType } from "../ProductDetails/ProductDetails";
-export default function Products() {
+type Props = {
+  products: ProductType[];
+};
+export default function Products({ products }: Props) {
   const [price, setPrice] = useState(100);
   const [discount50, setDiscount50] = useState(false);
   const [discount30, setDiscount30] = useState(false);
@@ -19,7 +21,7 @@ export default function Products() {
         sold: p.sold ?? "",
         lessprice: p.lessprice ?? "",
       })),
-    []
+    [products]
   );
 
   const handleAddToCart = (product: ProductType) => {

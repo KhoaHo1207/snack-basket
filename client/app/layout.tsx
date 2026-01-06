@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./Components/Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
 import Footer from "./Components/Footer/Footer";
+import QueryProvider from "./providers/QueryProvider";
 const unbo = Unbounded({
   variable: "--font-unbounded",
   subsets: ["latin"],
@@ -39,10 +40,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${unbo.variable} ${merienda.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
-        <Toaster position="top-right" reverseOrder={false} />
+        <QueryProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <Toaster position="top-right" reverseOrder={false} />
+        </QueryProvider>
       </body>
     </html>
   );
